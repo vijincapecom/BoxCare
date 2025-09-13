@@ -3,7 +3,12 @@
 import Image from "next/image"
 import { Button } from "../../components/ui/button"
 import { l15 } from "../../helpers/imagehelper"
-import LeafletMap from '../childComponent/MapComponent'
+import dynamic from "next/dynamic";
+
+const LeafletMap = dynamic(() => import("./MapComponent"), {
+  ssr: false,
+});
+
 
 const ContactThree = () => {
 
