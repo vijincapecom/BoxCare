@@ -16,6 +16,8 @@ export default function ContactUs () {
          <AnimatedSection>
         <ContactThree/>
         </AnimatedSection>
+
+        
        </Fragment>
     );
 }

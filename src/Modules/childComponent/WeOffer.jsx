@@ -50,7 +50,7 @@ const WeOffer = () => {
 
                 </div>
             </div>
-            <div className="absolute flex justify-end  inset-0   bottom-0  overflow-hidden opacity-50">
+            <div className="absolute flex justify-end  inset-0   bottom-0  overflow-hidden opacity-10">
                 <Image src={img7} width={600} height={100} alt="logo" className="w-full h-[500px] sm:w-[600px]" />
             </div>
         </section>

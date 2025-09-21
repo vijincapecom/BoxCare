@@ -47,14 +47,14 @@ const Industeries = () => {
                 delay: 2000,
               }),]}
 
-              className="w-full "
+              className="w-full"
               orientation="horizontal"
               setApi={setApi}
 
             >
               <CarouselContent>
                 {industries.map((item, index) => (
-                  <CarouselItem key={index} className="basis-[85%] sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                  <CarouselItem key={index} className="basis-[100%] sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <div className="flex items-center justify-center relative z-10">
                       <Image
                         src={item?.image?.src}
@@ -92,7 +92,7 @@ const Industeries = () => {
       </div>
 
       <div
-        className="absolute flex justify-end inset-0 bottom-0 overflow-hidden opacity-50 pointer-events-none z-0"
+        className="absolute flex justify-end inset-0 bottom-0 overflow-hidden opacity-10 pointer-events-none z-0"
         aria-hidden="true"
       >
         <Image
