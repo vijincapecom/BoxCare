@@ -9,9 +9,11 @@ import { Button } from "../../components/ui/button"
 import { l15 } from "../../helpers/imagehelper"
 import Image from "next/image"
 import { toast } from "sonner"
-import { z } from "zod";
+import { set, z } from "zod";
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import axios from "axios"
+import { Loader2 } from "lucide-react"
 
 
 
@@ -19,29 +21,50 @@ const schema = z.object({
     name: z.string().min(1, "Name is required"),
     email: z.string().min(1, "Email is required").email("Invalid email"),
     phone: z.string().min(1, "Contact number is required"),
-    service: z.string().min(1, "Please select a service"),
+    service: z.string().min(1, "Kindly select a service"),
     description: z.string().min(1, "Description is required"),
 });
 
 const ContactOne = () => {
-    const [service, setService] = useState("")
+    const [loader, setLoader] = useState(false)
+    const [selectedServices, setSelectedServices] = useState("");
     const {
         register,
         handleSubmit,
         setValue,
+        reset,
         formState: { errors },
     } = useForm({
         resolver: zodResolver(schema),
-       
+        defaultValues: {
+            name: "",
+            email: "",
+            phone: "",
+            service: "",
+            description: "",
+        }
+
     });
 
-    
-  const onError = () => {
-    toast.error("Please fill all required fields correctly.");
-  };
 
-    const onSubmit = () => {
-        toast.success('Your message has been sent successfully!')
+
+
+    const onSubmit = async (data) => {
+        const payload = {
+            ...data
+        }
+        setLoader(true)
+        try {
+             await axios.post("/api/submit/contact", payload)
+            toast.success('Your message has been sent successfully!')
+            reset()
+            setSelectedServices("")
+        } catch (error) {
+            toast.error(error.message)
+        } finally {
+            setLoader(false)
+        }
+
     }
     return (
         <section>
@@ -79,7 +102,7 @@ const ContactOne = () => {
                         <div className="bg-[#F6F8F0] p-8  rounded-xl space-y-8">
                             <h2 className="text-[24px] text-[#0F172A] md:text-[26px] lg:text-[30px] dm-sans font-medium mb-6">Let’s Talk</h2>
 
-                            <form className="space-y-12" onSubmit={handleSubmit(onSubmit, onError)}>
+                            <form className="space-y-12" onSubmit={handleSubmit(onSubmit)}>
                                 {/* Name + Email */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div>
@@ -116,7 +139,12 @@ const ContactOne = () => {
                                     </div>
 
                                     <div>
-                                        <Select onValueChange={(value) => setValue("service", value)}>
+                                        <Select
+                                            value={selectedServices}
+                                            onValueChange={(value) => {
+                                                setSelectedServices(value);
+                                                setValue("service", value, { shouldValidate: true }); 
+                                            }}>
                                             <SelectTrigger className="border-0 border-b rounded-none focus:ring-0 shadow-none w-full">
                                                 <SelectValue placeholder="Select Services" />
                                             </SelectTrigger>
@@ -142,11 +170,15 @@ const ContactOne = () => {
                                 <div className="flex items-center mt-4">
                                     <Button
                                         type="submit"
+                                        disabled={loader}
                                         className="bg-[#BFFF00] hover:bg-[#BFFF00] text-[#0F1419] dm-sans font-normal cursor-pointer text-[14px] sm:text-[17px] py-6 rounded-[6.5rem] transition-all duration-200 hover:scale-105"
                                     >
                                         <span className="px-2 flex items-center">
                                             Submit
-                                            <Image src={l15} width={10} height={10} alt="logo" className="w-[10px] h-[10px] ml-2" />
+                                            {
+                                                loader === true ? <Loader2 className="animate-spin" /> : <Image src={l15} width={10} height={10} alt="logo" className="w-[10px] h-[10px] ml-2" />
+                                            }
+
                                         </span>
                                     </Button>
                                 </div>
