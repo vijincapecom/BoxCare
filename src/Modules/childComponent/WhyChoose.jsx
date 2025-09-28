@@ -42,13 +42,13 @@ const WhyChoose = () => {
                     </div>
                     <div className="flex flex-col lg:flex-row-reverse gap-8 items-stretch">
                         <div className="flex w-full">
-                            <div className="mt-12 w-full">
+                            <div className="mt-12 w-full  ">
                                 <Image
                                     src={img6}
                                     width={500}
                                     height={500}
                                     alt="logo"
-                                    className="w-full h-full object-cover rounded-lg"
+                                    className="w-full h-full object-cover rounded-lg transition-all duration-200 hover:scale-105"
                                 />
                             </div>
                         </div>

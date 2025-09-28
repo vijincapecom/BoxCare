@@ -97,7 +97,7 @@ const TailoredPacking = () => {
                           : "bg-transparent border border-[#D5D5D5]"
                       )}
                     >
-                      <div className="aspect-[4/3] w-full  items-center justify-center">
+                      <div className="aspect-[4/3] w-full  items-center justify-center transition-all duration-200 hover:scale-105">
                         <img
                           src={p.img?.src || "/placeholder.svg"}
                           alt={p.title}

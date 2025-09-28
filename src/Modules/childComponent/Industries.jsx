@@ -55,13 +55,13 @@ const Industeries = () => {
               <CarouselContent>
                 {industries.map((item, index) => (
                   <CarouselItem key={index} className="basis-[100%] sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                    <div className="flex items-center justify-center relative z-10">
+                    <div className="flex items-center justify-center relative z-10 transition-all duration-200 hover:scale-105">
                       <Image
                         src={item?.image?.src}
                         width={400}
                         height={400}
                         alt="logo"
-                        className="w-full h-auto"
+                        className="w-full h-auto "
                       />
                       <div className="absolute bottom-3 left-4 w-full h-full flex items-end justify-start">
                         <h1

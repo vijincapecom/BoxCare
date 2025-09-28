@@ -30,6 +30,7 @@ const FlipTab = ({ tab }) => {
       {filteredData.map((data) => (
         <div
           key={data.id}
+           
           className="relative h-[400px] w-full bg-white rounded-lg shadow-lg overflow-hidden"
         >
           <div
@@ -37,7 +38,7 @@ const FlipTab = ({ tab }) => {
               ${activeCard === data.id ? "[transform:rotateX(180deg)]" : ""}`}
           >
             {/* Front Side */}
-            <div className="absolute inset-0 h-full w-full [backface-visibility:hidden] bg-white rounded-lg shadow-lg overflow-hidden">
+            <div  onClick={() => handleFlip(data.id)} className="absolute inset-0 h-full w-full cursor-pointer [backface-visibility:hidden] bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="overflow-hidden h-[80%]">
                 <img
                   src={data?.image?.src}
@@ -50,7 +51,7 @@ const FlipTab = ({ tab }) => {
                   {data.title}
                 </h3>
                 <Button
-                  onClick={() => handleFlip(data.id)}
+                  // onClick={() => handleFlip(data.id)}
                   size="sm"
                   className="dm-sans font-normal cursor-pointer text-[#0F172A] 
                     bg-[#B4DD13] hover:bg-[#B4DD13] rounded-full w-8 h-8 p-0 
@@ -70,7 +71,8 @@ const FlipTab = ({ tab }) => {
 
             {/* Back Side */}
             <div
-              className="absolute inset-0 h-full w-full [backface-visibility:hidden] [transform:rotateX(180deg)] bg-white rounded-lg shadow-lg"
+              onClick={() => handleFlip(data.id)}
+              className="absolute inset-0 h-full w-full cursor-pointer [backface-visibility:hidden] [transform:rotateX(180deg)] bg-white rounded-lg shadow-lg"
             >
               <div
                 className="h-full p-6 flex flex-col justify-between text-white rounded-lg"
@@ -83,7 +85,7 @@ const FlipTab = ({ tab }) => {
                 <div>
                   <div className="flex items-center justify-end mb-3">
                     <Button
-                      onClick={() => handleFlip(data.id)}
+                      // onClick={() => handleFlip(data.id)}
                       size="sm"
                       className="dm-sans font-normal cursor-pointer text-[#0F172A] 
                         bg-[#B4DD13] hover:bg-[#B4DD13] rounded-full w-8 h-8 p-0 

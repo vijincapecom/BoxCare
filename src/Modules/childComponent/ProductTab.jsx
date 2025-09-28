@@ -36,7 +36,7 @@ const ProductTab = () => {
                                     key={index}
                                     onClick={() => setActiveTab(tab.value)}
                                     className={`px-4 py-2 text-[16px] md:text-[20px] font-normal rounded-md transition-colors cursor-pointer
-          ${activeTab === tab.value
+                                    ${activeTab === tab.value
                                             ? "bg-[#B4DD13] text-[#0F172A] hover:bg-[#B4DD13] rounded-[6rem]"
                                             : "light-color-text hover:text-gray-900 bg-white shadow-none hover:bg-white text-[#0F172A]"
                                         }`}

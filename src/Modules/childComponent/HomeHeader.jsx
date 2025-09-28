@@ -36,6 +36,10 @@ const HomeHeader = ({ pathValue, pathDestructured }) => {
     const handleProduct= () => {
          router.push("/product")
     }
+    const handleHome = () => {
+        setIsMobileMenuOpen(false)
+        router.push("/")
+    }
 
     useEffect(() => {
         if (!api) {
@@ -87,8 +91,8 @@ const HomeHeader = ({ pathValue, pathDestructured }) => {
                     <div className="container mx-auto max-w-[85rem] px-4">
                         <header className="flex items-center justify-between px-4 md:px-6 py-4 ">
                             <div className="flex items-center">
-                                <div className=" rounded-lg flex items-center justify-center">
-                                    <Image src={logo} width={100} height={100} alt="logo" className="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px]" />
+                                <div className=" rounded-lg flex items-center justify-center cursor-pointer" >
+                                    <Image src={logo} width={100} height={100} alt="logo" className="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px]" onClick={handleHome}/>
                                 </div>
                             </div>
 
