@@ -40,7 +40,7 @@ export default function RootLayout({ children }) {
         showAtBottom={false} />
         <HeaderComponent/>
        <main className="flex-1">{children}</main> 
-       <Toaster className="bg-[#B4DD13] text-white"/>
+        <Toaster richColors />
        <FooterComponent/>
       </body>
     </html>

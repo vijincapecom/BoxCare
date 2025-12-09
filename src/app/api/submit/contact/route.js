@@ -16,12 +16,12 @@ export async function POST(req) {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: process.env.TARGET_EMAIL,
-      subject: "New Request Sended",
+      subject: "New Request Sent",
       html: `
-        <h3>New Request Sended</h3>
+        <h3>New Request Sent</h3>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Contact:</strong> ${phone}</p>
+        <p><strong>Contact Number:</strong> ${phone}</p>
         <p><strong>Service:</strong> ${service}</p>
         <p><strong>Description:</strong> ${description}</p>
       `,

@@ -53,7 +53,7 @@ const ContactOne = () => {
         setLoader(true)
         try {
              await axios.post("/api/submit/contact", payload)
-            toast.success('Your message has been sent successfully!')
+            toast.success('Thank you! Your message has been received. Our team will contact you shortly.')
             reset()
             setSelectedServices("")
         } catch (error) {
