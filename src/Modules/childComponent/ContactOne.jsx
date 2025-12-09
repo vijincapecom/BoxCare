@@ -46,9 +46,6 @@ const ContactOne = () => {
 
     });
 
-
-
-
     const onSubmit = async (data) => {
         const payload = {
             ...data
@@ -149,9 +146,12 @@ const ContactOne = () => {
                                                 <SelectValue placeholder="Select Services" />
                                             </SelectTrigger>
                                             <SelectContent>
-                                                <SelectItem value="product">Product</SelectItem>
-                                                <SelectItem value="app">App Value</SelectItem>
-                                                <SelectItem value="box">Box</SelectItem>
+                                                <SelectItem value="cartoonbox">Cartoon Box</SelectItem>
+                                                <SelectItem value="pizzabox">Pizza Box</SelectItem>
+                                                <SelectItem value="paperrolls">Paper Rolls</SelectItem>
+                                                <SelectItem value="product">Flexo Carton Printing</SelectItem>
+                                                <SelectItem value="offsetcartonprinting">Offset Carton Printing</SelectItem>
+
                                             </SelectContent>
                                         </Select>
                                         {errors.service && <p className="text-red-500 text-sm">{errors.service.message}</p>}
